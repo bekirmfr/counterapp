@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useState, useEffect, useCallback} from 'react'
 import Web3 from 'web3'
 import Abi from '../blockchain/counterABI'
-import 'bulma/css/Bulma.css' 
+import 'bulma/css/bulma.css' 
 import styles from '../styles/Counterapp.module.css'
 
 const CounterApp = () => {
@@ -49,6 +49,7 @@ const CounterApp = () => {
             .on('changed', changed => setError(changed))
             .on('error', err => setError(err.message))
             .on('connected', str => console.log(str))
+
         counterContract.events.Decreased(options)
             .on('data', event => getCounterHandler(), setWarning("Counter updated"))
             .on('changed', changed => setError(changed))
